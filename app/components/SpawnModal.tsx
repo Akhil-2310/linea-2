@@ -3,7 +3,7 @@ import { useDynamicContext } from "../../lib/dynamic";
 import { writeContract } from "viem/actions";
 import { addresses } from "@/contracts/addresses";
 import { GameAbi } from "@/contracts/abi/Game";
-import { opBNBTestnet } from "viem/chains";
+import { lineaSepoliaTestnet } from "viem/chains";
 const SpawnModal = () => {
   const { primaryWallet } = useDynamicContext() as any;
 
@@ -16,7 +16,7 @@ const SpawnModal = () => {
       address: addresses.GAME,
       abi: GameAbi,
       functionName: "spawn",
-      chain: opBNBTestnet,
+      chain: lineaSepoliaTestnet,
       account: address,
     });
   };

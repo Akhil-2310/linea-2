@@ -3,7 +3,7 @@ import { useDynamicContext } from "../../lib/dynamic";
 import { writeContract } from "viem/actions";
 import { addresses } from "@/contracts/addresses";
 import { GameAbi } from "@/contracts/abi/Game";
-import { opBNBTestnet } from "viem/chains";
+import { lineaSepolia } from "viem/chains";
 
 interface Item {
   id: number;
@@ -92,20 +92,20 @@ const AroundYouDrawer: React.FC<AroundYouDrawerProps> = ({
         address: addresses.GAME,
         abi: GameAbi,
         functionName: "fight",
-        chain: opBNBTestnet,
+        chain: lineaSepolia,
         account: address,
       });
-      triggerFight()
+      triggerFight();
     }
     if (action === "Collect") {
       await writeContract(walletClient, {
         address: addresses.GAME,
         abi: GameAbi,
         functionName: "harvest",
-        chain: opBNBTestnet,
+        chain: lineaSepoliaTestnet,
         account: address,
       });
-      triggerHarvest()
+      triggerHarvest();
     }
   };
 
@@ -121,10 +121,11 @@ const AroundYouDrawer: React.FC<AroundYouDrawerProps> = ({
             <button
               key={filter}
               onClick={() => setSelectedFilter(filter)}
-              className={`px-3 py-1 rounded-full ${selectedFilter === filter
-                ? "bg-black text-white"
-                : "bg-white text-black border border-gray-300"
-                }`}
+              className={`px-3 py-1 rounded-full ${
+                selectedFilter === filter
+                  ? "bg-black text-white"
+                  : "bg-white text-black border border-gray-300"
+              }`}
             >
               {filter === "All" ? filter : `${filter} `}
             </button>
